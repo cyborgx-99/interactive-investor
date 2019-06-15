@@ -68,7 +68,7 @@ public class SimpleTest extends Setup
                 String bookingId = newBookingFound.getBookingId();
                 guest.setBookingId(bookingId);
 
-                homePage.deleteBooking(newBookingFound.getBookingId());
+                homePage.deleteBooking(bookingId);
                 bookingIds = homePage.getAllBookingIds();
 
                 bookingMatches = false;
@@ -79,7 +79,10 @@ public class SimpleTest extends Setup
         List<WebElement> rows = homePage.getBookingRows();
         for(int j=rows.size()-1; j>0; j--) {
             String bookingId = guest.getBookingId();
+
+            //check if the booking id is found on the page
             if(bookingIds.contains(bookingId)) {
+                //capture all the data for that row and compare
                 Guest newBookingGuest = homePage.findBookingFor(guest, j);
                 Boolean isMatch = newBookingGuest.confirmBookingMatchesFor(guest);
 
