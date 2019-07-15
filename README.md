@@ -1,1 +1,11 @@
-# equal-experts
+# Interactive Investor
+
+On the main page, https://www.ii.co.uk/indices/ftse-100-index, I decided to automate the addition of stocks to the portfolio as a test. It was a harder test to automate rather than simply checking the values for the FTSE are visible on the page and other elements such best/worst performers are showing data. There's no way to confirm what the values are mean to be, so a simple check to ensure a value is present would have been enough but this wouldn't have shown my strengths in automation. With the portfolio test, I had to get a login in place and automate that part as well, so each time the test runs, the user is logged into the account to view their portfolio. Normally i would clear down the database (if i had access), in this case I didnt so I deliberately deleted any existing porfolios on the account. This ensures that anything on the page is whatever I have added to it. I perform a search for a stock and then add the stock to a test portfolio. Finally i check the figures are displayed and match what I expect. 
+
+For the second test, I modified the code to be able to add multiple stocks to the portfolio. For this test, I also check the totals as well. This can also be added to the first tests quite easily. The second test also allowed a fair bit of refactoring of the code to cater for the necessary changes required. This test also makes the first test obsolete as everything is covered from the first test but I've left it in so you can see my progression and thought process from one to the next.
+
+I utilised page objects througout the tests, thereby providing a degree of seperation between the test and the services a page provides. This also makes maintenance and enhancements much easier to do. Hard coded strings are stored in a properties file, excluding web element identifiers, those are kept in the page object. I have added comments where necessary, generally I prefere the code to be readeable enough to not require comments
+
+
+## Observations
+The website is not the easiest to automate, infact it is not very automation friendly at ll. Simple things like id's on web elements such as text boxes are missing. The classes used in the markup are mainly made up of numbers, which again causes issues when automating, its very easy to grab the wrong number and in some cases the class numbers change when refreshing the page. Without some form of identifier for the diffrent elements on the page, its very difficult and time consuming to automate the web page.
